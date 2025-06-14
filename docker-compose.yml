@@ -1,0 +1,32 @@
+services:
+  backend:
+    build:    
+      context: https://github.com/DE50-AI-Training/ai-training-backend.git#test # Should directly pull image
+    container_name: ai-training-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+
+  webapp:
+    build:
+      context: https://github.com/DE50-AI-Training/ai-training-webapp.git#test
+      args:
+        NEXT_PUBLIC_BACKEND_URL: http://localhost:8000
+    container_name: ai-training-webapp
+    ports:
+      - "3000:3000"
+      
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=http://localhost:8000   # pour le navigateur
+      - SERVER_SIDE_BACKEND_URL=http://ai-training-backend:8000  # utiliser le nom du conteneur
+    depends_on:
+      - backend
+
+  redis:
+    image: redis:latest
+    container_name: ai-training-redis
+    expose:
+      - "6379"
