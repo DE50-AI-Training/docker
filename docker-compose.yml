@@ -1,7 +1,7 @@
 services:
   backend:
     build:    
-      context: https://github.com/DE50-AI-Training/ai-training-backend.git#containerization
+      context: https://github.com/DE50-AI-Training/ai-training-backend.git
     container_name: ai-training-backend
     ports:
       - "8000:8000"
@@ -12,7 +12,7 @@ services:
 
   webapp:
     build:
-      context: https://github.com/DE50-AI-Training/ai-training-webapp.git#containerisation
+      context: https://github.com/DE50-AI-Training/ai-training-webapp.git
       args:
         NEXT_PUBLIC_BACKEND_URL: http://localhost:8000
     container_name: ai-training-webapp
