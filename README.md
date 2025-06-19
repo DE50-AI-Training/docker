@@ -2,7 +2,7 @@
 
 Prerequisites:
 - Have Docker installed via your package manager
-- **For windows users**: install docker via Docker dDsktop
+- **For windows users**: install docker via Docker Desktop
 
 First, clone the repository:
 ```
@@ -13,7 +13,7 @@ Then run the Docker Compose:
 ```
 docker compose up --build
 ```
-You should be ready to go !
+_You should be ready to go !_
 
 You can also run the project detached from your terminal using the `-d` flag
 In this case, stop it using:
